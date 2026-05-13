@@ -1,0 +1,168 @@
+{
+  "bsonType": "object",
+  "required": ["user_id", "order_no", "items", "total_amount", "address", "status"],
+  "permission": {
+    "read": "doc.user_id == auth.uid || auth.role == 'admin'",
+    "create": "auth.uid != null",
+    "update": "(doc.user_id == auth.uid && doc.status == 0) || auth.role == 'admin'",
+    "delete": "auth.role == 'admin'"
+  },
+  "properties": {
+    "_id": {
+      "description": "ID，系统自动生成"
+    },
+    "user_id": {
+      "bsonType": "string",
+      "description": "用户ID",
+      "foreignKey": "users._id"
+    },
+    "order_no": {
+      "bsonType": "string",
+      "description": "订单编号",
+      "title": "订单编号"
+    },
+    "items": {
+      "bsonType": "array",
+      "description": "订单商品",
+      "items": {
+        "bsonType": "object",
+        "properties": {
+          "product_id": {
+            "bsonType": "string",
+            "description": "商品ID",
+            "foreignKey": "products._id"
+          },
+          "name": {
+            "bsonType": "string",
+            "description": "商品名称"
+          },
+          "price": {
+            "bsonType": "number",
+            "description": "商品价格"
+          },
+          "quantity": {
+            "bsonType": "int",
+            "description": "商品数量",
+            "minimum": 1
+          },
+          "image": {
+            "bsonType": "string",
+            "description": "商品图片"
+          },
+          "spec": {
+            "bsonType": "string",
+            "description": "商品规格"
+          }
+        }
+      }
+    },
+    "total_amount": {
+      "bsonType": "number",
+      "description": "订单总金额",
+      "minimum": 0
+    },
+    "address": {
+      "bsonType": "object",
+      "description": "收货地址",
+      "properties": {
+        "name": {
+          "bsonType": "string",
+          "description": "收货人姓名"
+        },
+        "phone": {
+          "bsonType": "string",
+          "description": "收货人电话"
+        },
+        "province": {
+          "bsonType": "string",
+          "description": "省份"
+        },
+        "city": {
+          "bsonType": "string",
+          "description": "城市"
+        },
+        "district": {
+          "bsonType": "string",
+          "description": "区/县"
+        },
+        "detail": {
+          "bsonType": "string",
+          "description": "详细地址"
+        }
+      }
+    },
+    "status": {
+      "bsonType": "int",
+      "description": "订单状态：0-待付款 1-待发货 2-待收货 3-已完成 4-已取消 5-已退款",
+      "minimum": 0,
+      "maximum": 5
+    },
+    "payment": {
+      "bsonType": "object",
+      "description": "支付信息",
+      "properties": {
+        "method": {
+          "bsonType": "string",
+          "description": "支付方式：wechat-微信支付 alipay-支付宝 cod-货到付款",
+          "enum": ["wechat", "alipay", "cod"]
+        },
+        "transaction_id": {
+          "bsonType": "string",
+          "description": "支付交易号"
+        },
+        "paid_at": {
+          "bsonType": "timestamp",
+          "description": "支付时间"
+        }
+      }
+    },
+    "delivery": {
+      "bsonType": "object",
+      "description": "配送信息",
+      "properties": {
+        "company": {
+          "bsonType": "string",
+          "description": "快递公司"
+        },
+        "tracking_no": {
+          "bsonType": "string",
+          "description": "快递单号"
+        },
+        "shipped_at": {
+          "bsonType": "timestamp",
+          "description": "发货时间"
+        }
+      }
+    },
+    "remark": {
+      "bsonType": "string",
+      "description": "订单备注"
+    },
+    "create_date": {
+      "bsonType": "timestamp",
+      "description": "创建时间",
+      "defaultValue": {
+        "$env": "now"
+      }
+    },
+    "update_date": {
+      "bsonType": "timestamp",
+      "description": "更新时间",
+      "defaultValue": {
+        "$env": "now"
+      }
+    },
+    "pay_expire_time": {
+      "bsonType": "timestamp",
+      "description": "支付过期时间"
+    },
+    "completed_at": {
+      "bsonType": "timestamp",
+      "description": "订单完成时间"
+    },
+    "canceled_at": {
+      "bsonType": "timestamp",
+      "description": "订单取消时间"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "payOrder",
+  "version": "1.0.0",
+  "description": "订单支付云函数",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "^2.6.3"
+  },
+  "author": "pharmacy-admin",
+  "license": "ISC",
+  "cloudfunction-config": {
+    "memorySize": 256,
+    "timeout": 10,
+    "triggers": [],
+    "path": "/payOrder",
+    "runtime": "Nodejs12"
+  }
+}

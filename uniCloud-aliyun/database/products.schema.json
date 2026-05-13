@@ -1,0 +1,143 @@
+{
+  "bsonType": "object",
+  "required": ["name", "price", "category", "stock"],
+  "permission": {
+    "read": true,
+    "create": "auth.role == 'admin'",
+    "update": "auth.role == 'admin'",
+    "delete": "auth.role == 'admin'"
+  },
+  "properties": {
+    "_id": {
+      "description": "ID，系统自动生成"
+    },
+    "name": {
+      "bsonType": "string",
+      "description": "商品名称",
+      "title": "商品名称",
+      "trim": "both",
+      "minLength": 2
+    },
+    "description": {
+      "bsonType": "string",
+      "description": "商品描述",
+      "title": "商品描述",
+      "trim": "both"
+    },
+    "price": {
+      "bsonType": "number",
+      "description": "商品价格",
+      "title": "价格",
+      "minimum": 0
+    },
+    "originalPrice": {
+      "bsonType": "number",
+      "description": "商品原价",
+      "title": "原价",
+      "minimum": 0
+    },
+    "category": {
+      "bsonType": "string",
+      "description": "商品分类",
+      "title": "分类"
+    },
+    "subCategory": {
+      "bsonType": "string",
+      "description": "商品子分类",
+      "title": "子分类"
+    },
+    "stock": {
+      "bsonType": "int",
+      "description": "库存数量",
+      "title": "库存",
+      "minimum": 0
+    },
+    "sales": {
+      "bsonType": "int",
+      "description": "销量",
+      "title": "销量",
+      "minimum": 0,
+      "defaultValue": 0
+    },
+    "spec": {
+      "bsonType": "string",
+      "description": "商品规格",
+      "title": "规格"
+    },
+    "manufacturer": {
+      "bsonType": "string",
+      "description": "生产厂家",
+      "title": "厂家"
+    },
+    "approvalNumber": {
+      "bsonType": "string",
+      "description": "批准文号",
+      "title": "批准文号"
+    },
+    "images": {
+      "bsonType": "array",
+      "description": "商品图片",
+      "title": "图片",
+      "items": {
+        "bsonType": "string"
+      }
+    },
+    "mainImage": {
+      "bsonType": "string",
+      "description": "商品主图",
+      "title": "主图"
+    },
+    "isRx": {
+      "bsonType": "bool",
+      "description": "是否处方药",
+      "title": "处方药",
+      "defaultValue": false
+    },
+    "isOtc": {
+      "bsonType": "bool",
+      "description": "是否非处方药",
+      "title": "非处方药",
+      "defaultValue": false
+    },
+    "isRecommended": {
+      "bsonType": "bool",
+      "description": "是否推荐",
+      "title": "推荐",
+      "defaultValue": false
+    },
+    "isHot": {
+      "bsonType": "bool",
+      "description": "是否热销",
+      "title": "热销",
+      "defaultValue": false
+    },
+    "isNew": {
+      "bsonType": "bool",
+      "description": "是否新品",
+      "title": "新品",
+      "defaultValue": false
+    },
+    "status": {
+      "bsonType": "int",
+      "description": "商品状态：0-下架 1-上架",
+      "title": "状态",
+      "minimum": 0,
+      "maximum": 1,
+      "defaultValue": 1
+    },
+    "create_date": {
+      "bsonType": "timestamp",
+      "description": "创建时间",
+      "defaultValue": {
+        "$env": "now"
+      }
+    },
+    "update_date": {
+      "bsonType": "timestamp",
+      "description": "更新时间",
+      "defaultValue": {
+        "$env": "now"
+      }
+    }
+  }
+}

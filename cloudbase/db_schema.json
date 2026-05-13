@@ -1,0 +1,124 @@
+{
+  "collections": {
+    "users": {
+      "description": "User accounts",
+      "indexes": [
+        { "name": "idx_openid", "fields": ["openid"], "unique": true },
+        { "name": "idx_role", "fields": ["role"] },
+        { "name": "idx_status", "fields": ["status"] }
+      ]
+    },
+    "products": {
+      "description": "Pharmacy products",
+      "indexes": [
+        { "name": "idx_categoryId", "fields": ["categoryId"] },
+        { "name": "idx_name", "fields": ["name"] },
+        { "name": "idx_status", "fields": ["status"] },
+        { "name": "idx_salesCount", "fields": ["salesCount"] },
+        { "name": "idx_isFeatured", "fields": ["isFeatured"] }
+      ]
+    },
+    "categories": {
+      "description": "Product categories (tree structure)",
+      "indexes": [
+        { "name": "idx_parentId", "fields": ["parentId"] },
+        { "name": "idx_order", "fields": ["order"] },
+        { "name": "idx_status", "fields": ["status"] }
+      ]
+    },
+    "cart": {
+      "description": "Shopping cart",
+      "indexes": [
+        { "name": "idx_userId_productId", "fields": ["userId", "productId"], "unique": true },
+        { "name": "idx_userId", "fields": ["userId"] }
+      ]
+    },
+    "orders": {
+      "description": "Orders",
+      "indexes": [
+        { "name": "idx_userId", "fields": ["userId"] },
+        { "name": "idx_orderNo", "fields": ["orderNo"], "unique": true },
+        { "name": "idx_status", "fields": ["status"] },
+        { "name": "idx_createTime", "fields": ["createTime"] }
+      ]
+    },
+    "addresses": {
+      "description": "Shipping addresses",
+      "indexes": [
+        { "name": "idx_userId", "fields": ["userId"] },
+        { "name": "idx_userId_isDefault", "fields": ["userId", "isDefault"] }
+      ]
+    },
+    "favorites": {
+      "description": "User favorites",
+      "indexes": [
+        { "name": "idx_userId_productId", "fields": ["userId", "productId"], "unique": true },
+        { "name": "idx_userId", "fields": ["userId"] }
+      ]
+    },
+    "coupons": {
+      "description": "Available coupons",
+      "indexes": [
+        { "name": "idx_status", "fields": ["status"] },
+        { "name": "idx_startTime_endTime", "fields": ["startTime", "endTime"] }
+      ]
+    },
+    "userCoupons": {
+      "description": "User claimed coupons",
+      "indexes": [
+        { "name": "idx_userId_status", "fields": ["userId", "status"] },
+        { "name": "idx_userId_couponId", "fields": ["userId", "couponId"] }
+      ]
+    },
+    "payments": {
+      "description": "Payment records",
+      "indexes": [
+        { "name": "idx_orderId", "fields": ["orderId"] },
+        { "name": "idx_paymentNo", "fields": ["paymentNo"], "unique": true },
+        { "name": "idx_userId", "fields": ["userId"] }
+      ]
+    },
+    "reviews": {
+      "description": "Product reviews",
+      "indexes": [
+        { "name": "idx_productId", "fields": ["productId"] },
+        { "name": "idx_userId", "fields": ["userId"] },
+        { "name": "idx_userId_productId", "fields": ["userId", "productId"], "unique": true }
+      ]
+    },
+    "banners": {
+      "description": "Homepage banners",
+      "indexes": [
+        { "name": "idx_status", "fields": ["status"] },
+        { "name": "idx_order", "fields": ["order"] }
+      ]
+    },
+    "promotions": {
+      "description": "Promotional campaigns",
+      "indexes": [
+        { "name": "idx_status", "fields": ["status"] },
+        { "name": "idx_startTime_endTime", "fields": ["startTime", "endTime"] }
+      ]
+    },
+    "browsingHistory": {
+      "description": "User browsing history",
+      "indexes": [
+        { "name": "idx_userId", "fields": ["userId"] },
+        { "name": "idx_userId_productId", "fields": ["userId", "productId"] }
+      ]
+    },
+    "searchHistory": {
+      "description": "Search history",
+      "indexes": [
+        { "name": "idx_userId", "fields": ["userId"] },
+        { "name": "idx_userId_keyword", "fields": ["userId", "keyword"] }
+      ]
+    },
+    "logistics": {
+      "description": "Logistics/shipping records",
+      "indexes": [
+        { "name": "idx_orderId", "fields": ["orderId"] }
+      ]
+    }
+  }
+}

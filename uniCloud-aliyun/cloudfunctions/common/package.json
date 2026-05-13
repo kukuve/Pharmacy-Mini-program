@@ -1,0 +1,15 @@
+{
+  "name": "common",
+  "version": "1.0.0",
+  "description": "药店小程序公共模块",
+  "main": "index.js",
+  "author": "pharmacy-admin",
+  "license": "ISC",
+  "cloudfunction-config": {
+    "memorySize": 128,
+    "timeout": 5,
+    "triggers": [],
+    "path": "/common",
+    "runtime": "Nodejs12"
+  }
+}

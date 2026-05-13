@@ -1,0 +1,180 @@
+{
+  "collection": {
+    "users": {
+      "data": [],
+      "index": [
+        {
+          "IndexName": "username_index",
+          "MgoKeySchema": {
+            "MgoIndexKeys": [{
+              "Name": "username",
+              "Direction": "1"
+            }],
+            "MgoIsUnique": true
+          }
+        },
+        {
+          "IndexName": "phone_index",
+          "MgoKeySchema": {
+            "MgoIndexKeys": [{
+              "Name": "phone",
+              "Direction": "1"
+            }],
+            "MgoIsUnique": true
+          }
+        },
+        {
+          "IndexName": "email_index",
+          "MgoKeySchema": {
+            "MgoIndexKeys": [{
+              "Name": "email",
+              "Direction": "1"
+            }],
+            "MgoIsUnique": true
+          }
+        }
+      ]
+    },
+    "products": {
+      "data": [],
+      "index": [
+        {
+          "IndexName": "category_index",
+          "MgoKeySchema": {
+            "MgoIndexKeys": [{
+              "Name": "category",
+              "Direction": "1"
+            }],
+            "MgoIsUnique": false
+          }
+        },
+        {
+          "IndexName": "name_index",
+          "MgoKeySchema": {
+            "MgoIndexKeys": [{
+              "Name": "name",
+              "Direction": "1"
+            }],
+            "MgoIsUnique": false
+          }
+        },
+        {
+          "IndexName": "status_index",
+          "MgoKeySchema": {
+            "MgoIndexKeys": [{
+              "Name": "status",
+              "Direction": "1"
+            }],
+            "MgoIsUnique": false
+          }
+        }
+      ]
+    },
+    "cart": {
+      "data": [],
+      "index": [
+        {
+          "IndexName": "user_product_index",
+          "MgoKeySchema": {
+            "MgoIndexKeys": [{
+              "Name": "user_id",
+              "Direction": "1"
+            }, {
+              "Name": "product_id",
+              "Direction": "1"
+            }],
+            "MgoIsUnique": true
+          }
+        }
+      ]
+    },
+    "orders": {
+      "data": [],
+      "index": [
+        {
+          "IndexName": "user_index",
+          "MgoKeySchema": {
+            "MgoIndexKeys": [{
+              "Name": "user_id",
+              "Direction": "1"
+            }],
+            "MgoIsUnique": false
+          }
+        },
+        {
+          "IndexName": "order_no_index",
+          "MgoKeySchema": {
+            "MgoIndexKeys": [{
+              "Name": "order_no",
+              "Direction": "1"
+            }],
+            "MgoIsUnique": true
+          }
+        },
+        {
+          "IndexName": "status_index",
+          "MgoKeySchema": {
+            "MgoIndexKeys": [{
+              "Name": "status",
+              "Direction": "1"
+            }],
+            "MgoIsUnique": false
+          }
+        },
+        {
+          "IndexName": "create_date_index",
+          "MgoKeySchema": {
+            "MgoIndexKeys": [{
+              "Name": "create_date",
+              "Direction": "-1"
+            }],
+            "MgoIsUnique": false
+          }
+        }
+      ]
+    },
+    "addresses": {
+      "data": [],
+      "index": [
+        {
+          "IndexName": "user_index",
+          "MgoKeySchema": {
+            "MgoIndexKeys": [{
+              "Name": "user_id",
+              "Direction": "1"
+            }],
+            "MgoIsUnique": false
+          }
+        },
+        {
+          "IndexName": "default_index",
+          "MgoKeySchema": {
+            "MgoIndexKeys": [{
+              "Name": "user_id",
+              "Direction": "1"
+            }, {
+              "Name": "is_default",
+              "Direction": "1"
+            }],
+            "MgoIsUnique": false
+          }
+        }
+      ]
+    },
+    "favorites": {
+      "data": [],
+      "index": [
+        {
+          "IndexName": "user_index",
+          "MgoKeySchema": {
+            "MgoIndexKeys": [{
+              "Name": "user_id",
+              "Direction": "1"
+            }],
+            "MgoIsUnique": false
+          }
+        }
+      ]
+    }
+  }
+}
